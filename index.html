@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HardFlow</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header__container">
+          <h1 class="header__title">HardFlow</h1>
+
+          <ul class="header__menu">
+            <li class="header__item"><a href="#features">Особливості</a></li>
+            <li class="header__item"><a href="#stocks">Залишки</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="features-section">
+        <div class="container">
+          <h2 class="features-section__title">Особливості</h2>
+          <ul class="features-section__list">
+            <li class="features-section__item">
+              Інтуїтивно зрозумілий інтерфейс для створення складних робочих
+              процесів
+            </li>
+            <li class="features-section__item">
+              Підтримка інтеграції з різними сервісами та API
+            </li>
+            <li class="features-section__item">
+              Гнучкі налаштування для адаптації до будь-яких потреб
+            </li>
+            <li class="features-section__item">
+              Можливість моніторингу та аналізу виконання процесів в реальному
+              часі
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="remaining-stocks-section">
+        <div class="container">
+          <h2 class="remaining-stocks-section__title">Залишки на складі</h2>
+        </div>
+        <!-- Statistics -->
+        <section class="statistick-section">
+          <div class="statistick-section__item">
+            <div class="stat-icon" style="background: var(--accent-light)">
+              <svg style="stroke: #534ab7" viewBox="0 0 24 24">
+                <rect x="3" y="3" width="7" height="7" />
+                <rect x="14" y="3" width="7" height="7" />
+                <rect x="14" y="14" width="7" height="7" />
+                <rect x="3" y="14" width="7" height="7" />
+              </svg>
+            </div>
+            <div class="stat-num" id="s-pos">0</div>
+            <div class="stat-label">Позицій</div>
+          </div>
+          <div class="statistick-section__item">
+            <div class="stat-icon" style="background: var(--green-bg)">
+              <svg style="stroke: #0f6e56" viewBox="0 0 24 24">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+              </svg>
+            </div>
+            <div class="stat-num" id="s-units">0</div>
+            <div class="stat-label">Одиниць</div>
+          </div>
+          <div class="statistick-section__item">
+            <div class="stat-icon" style="background: var(--amber-bg)">
+              <svg style="stroke: #854f0b" viewBox="0 0 24 24">
+                <path
+                  d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg>
+            </div>
+            <div class="stat-num" id="s-low" style="color: var(--amber)">0</div>
+            <div class="stat-label">Мало (&le;3)</div>
+          </div>
+          <div class="statistick-section__item">
+            <div class="stat-icon" style="background: var(--red-bg)">
+              <svg style="stroke: var(--red)" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="15" y1="9" x2="9" y2="15" />
+                <line x1="9" y1="9" x2="15" y2="15" />
+              </svg>
+            </div>
+            <div class="stat-num" id="s-zero" style="color: var(--red)">0</div>
+            <div class="stat-label">Немає</div>
+          </div>
+        </section>
+
+        <!-- Add form -->
+        <section class="panel-section">
+          <div class="container">
+            <div class="panel-section__head">
+              <span class="panel-section__title">Додати товар</span>
+              <div class="panel-section__form-grid">
+                <div class="panel-section__field">
+                  <label>Найменування</label>
+                  <input
+                    id="f-name"
+                    type="text"
+                    placeholder="Наприклад: Ноутбук HP 250 G9"
+                  />
+                </div>
+                <div class="panel-section__field">
+                  <label>Постачальник</label>
+                  <input
+                    id="f-supplier"
+                    type="text"
+                    placeholder="Наприклад: ТОВ 'Інвард'"
+                  />
+                </div>
+                <div class="panel-section__field">
+                  <label>Категорія</label>
+                  <select id="f-cat">
+                    <option value="tech">Техніка</option>
+                    <option value="multifunctional device">БФП</option>
+                    <option value="network equipment">
+                      Мережеве обладнання
+                    </option>
+                    <option value="consumable">Витратники</option>
+                    <option value="other">Інше</option>
+                  </select>
+                </div>
+                <div class="panel-section__field">
+                  <label>К-сть</label>
+                  <input id="f-qty" type="number" min="0" value="1" />
+                </div>
+                <div class="panel-section__field">
+                  <label>Одиниця</label>
+                  <select id="f-unit">
+                    <option>шт.</option>
+                    <option>м.</option>
+                    <option>упак.</option>
+                  </select>
+                </div>
+              </div>
+              <button id="f-submit" class="btn-add" onclick="addItem()">
+                Додати товар
+              </button>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- Table panel -->
+      <section class="stock-section">
+        <div class="container">
+          <div class="stock-section__panel">
+            <div class="stock-section__toolbar">
+              <button
+                class="stock-section__chip--active"
+                onclick="setFilter('all', this)"
+              >
+                Всі
+              </button>
+              <button
+                class="stock-section__chip"
+                onclick="setFilter('tech', this)"
+              >
+                Техніка
+              </button>
+              <button
+                class="stock-section__chip"
+                onclick="setFilter('cable', this)"
+              >
+                БФП
+              </button>
+              <button
+                class="stock-section__chip"
+                onclick="setFilter('network equipment', this)"
+              >
+                Мережеве обладнання
+              </button>
+              <button
+                class="stock-section__chip"
+                onclick="setFilter('consumable', this)"
+              >
+                Витратники
+              </button>
+              <button
+                class="stock-section__chip"
+                onclick="setFilter('other', this)"
+              >
+                Інше
+              </button>
+              <div class="stock-section__search-box">
+                <!-- <svg viewBox="0 0 24 24">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg> -->
+                <input
+                  id="search"
+                  type="text"
+                  placeholder="Пошук..."
+                  oninput="render()"
+                />
+              </div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 36%">Назва</th>
+                  <th style="width: 16%">Категорія</th>
+                  <th style="width: 18%">Кількість</th>
+                  <th style="width: 13%">Залишок</th>
+                  <th style="width: 10%">Од.</th>
+                  <th style="width: 7%"></th>
+                </tr>
+              </thead>
+              <tbody id="tbody"></tbody>
+            </table>
+            <div id="empty" class="empty-state" style="display: none">
+              <div class="ico">📦</div>
+              Товарів не знайдено. Додайте перший!
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
